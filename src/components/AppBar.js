@@ -9,7 +9,7 @@ const HeaderAppBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem;
   border-bottom: 0.1rem solid #2a363b;
 `;
 

@@ -1,12 +1,14 @@
 import axios from "axios";
 import contactsActions from "./contactsActions";
 
-const AUTH_TOKEN =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTk3M2M5NWYxMDc4ZTAwMTc1YWRjOTgiLCJpYXQiOjE1ODY5Njk3NDl9.vNTXzMP09pGaLDoZ9kJjYvmP2y3mn37nGLFsWstjhWc";
+axios.defaults.baseURL = "http://localhost:2000";
 
-axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
-axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
-axios.defaults.headers.post["Content-Type"] = "application/json";
+// const AUTH_TOKEN =
+//   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTk3M2M5NWYxMDc4ZTAwMTc1YWRjOTgiLCJpYXQiOjE1ODY5Njk3NDl9.vNTXzMP09pGaLDoZ9kJjYvmP2y3mn37nGLFsWstjhWc";
+
+// axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
+// axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+// axios.defaults.headers.post["Content-Type"] = "application/json";
 
 const addContact = (name, number) => (dispatch) => {
   dispatch(contactsActions.addContactRequest());

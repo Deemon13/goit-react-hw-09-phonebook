@@ -8,7 +8,7 @@ const ButtonSignUp = styled.button`
   font-weight: 700;
 
   margin: 0 auto;
-  padding: 1rem 5rem;
+  padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 1rem;
   background-color: #c7c0ee;

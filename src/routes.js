@@ -29,7 +29,7 @@ export default [
     path: "/contacts",
     label: "contacts",
     exact: true,
-    component: lazy(() => import("./views/ContactsUserView")),
+    component: lazy(() => import("./views/ContactsUserContainer")),
   },
   {
     path: "/tasks",
