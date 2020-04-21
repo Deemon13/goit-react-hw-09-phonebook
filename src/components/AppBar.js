@@ -1,9 +1,12 @@
 import React from "react";
-import Navigation from "./Navigation";
-import UserMenu from "./user-components/UserMenu";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import SwitchTheme from "./libs-components/SwitchTheme";
+import Navigation from "./Navigation";
+import UserMenu from "./user-components/UserMenu";
+import AuthMenu from "./user-components/AuthMenu";
 import withThemeContext from "../hoc/withThemeContext";
+import { authSelectors } from "../redux/auth";
 
 const HeaderAppBar = styled.div`
   display: flex;
@@ -24,11 +27,9 @@ const ThemeName = styled.p`
   font-weight: 500;
 `;
 
-function AppBar({ theme }) {
+function AppBar({ theme, isAuthenticated }) {
   return (
     <HeaderAppBar>
-      <Navigation />
-      <UserMenu />
       <ContainerTheme>
         <ThemeName>
           Theme: {theme.theme === "light" ? "Light" : "Dark"}
@@ -38,8 +39,14 @@ function AppBar({ theme }) {
           onChange={theme.toggleTheme}
         />
       </ContainerTheme>
+      <Navigation />
+      {isAuthenticated ? <UserMenu /> : <AuthMenu />}
     </HeaderAppBar>
   );
 }
 
-export default withThemeContext(AppBar);
+const mapStateToProps = (state) => ({
+  isAuthenticated: authSelectors.isAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(withThemeContext(AppBar));

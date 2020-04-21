@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { authOperations } from "../redux/auth";
 import ContainerViews from "../components/user-components/ContainerViews";
 import ButtonForm from "../components/user-components/ButtonForm";
 import StyledViews from "./StyledViews";
@@ -18,15 +20,14 @@ class RegisterUserView extends Component {
     e.preventDefault();
 
     this.props.onRegister({ ...this.state });
-    // this.setState({ name: "", email: "", password: "" });
+    this.setState({ name: "", email: "", password: "" });
   };
 
   render() {
     const { name, email, password } = this.state;
     return (
       <ContainerViews viewName={"new user registration"}>
-        <StyledViews.FormView>
-          {/* <FormRegistration onSubmit={this.handleSubmit}> */}
+        <StyledViews.FormView onSubmit={this.handleSubmit}>
           <StyledViews.LabelInput>
             name:
             <StyledViews.InputForm
@@ -62,4 +63,6 @@ class RegisterUserView extends Component {
   }
 }
 
-export default RegisterUserView;
+export default connect(null, { onRegister: authOperations.register })(
+  RegisterUserView
+);

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-import { authActions } from "./auth";
+import authActions from "./authActions";
 
 const initialUserState = { name: null, email: null };
 
@@ -29,30 +29,30 @@ const error = createReducer(null, {
   [authActions.loginRequest]: () => null,
   [authActions.logoutRequest]: () => null,
   [authActions.getCurrentUserRequest]: () => null,
-  [authActions.deleteCurrentUserError]: () => null,
+  [authActions.deleteCurrentUserRequest]: () => null,
 });
 
-// const loading = createReducer(false, {
-//     [authActions.registerRequest]: () => true,
-//     [authActions.registerSuccess]: () => false,
-//     [authActions.registerError]: () => false,
-//     [authActions.loginRequest]: () => true,
-//     [authActions.loginSuccess]: () => false,
-//     [authActions.loginError]: () => false,
-//     [authActions.logoutRequest]: () => true,
-//     [authActions.logoutSuccess]: () => false,
-//     [authActions.logoutError]: () => false,
-//     [authActions.getCurrentUserRequest]: () => true,
-//     [authActions.getCurrentUserSuccess]: () => false,
-//     [authActions.getCurrentUserError]: () => false,
-//     [authActions.deleteCurrentUserRequest]: () => true,
-//     [authActions.deleteCurrentUserSuccess]: () => false,
-//     [authActions.deleteCurrentUserError]: () => false,
-//   });
+const loading = createReducer(false, {
+  [authActions.registerRequest]: () => true,
+  [authActions.registerSuccess]: () => false,
+  [authActions.registerError]: () => false,
+  [authActions.loginRequest]: () => true,
+  [authActions.loginSuccess]: () => false,
+  [authActions.loginError]: () => false,
+  [authActions.logoutRequest]: () => true,
+  [authActions.logoutSuccess]: () => false,
+  [authActions.logoutError]: () => false,
+  [authActions.getCurrentUserRequest]: () => true,
+  [authActions.getCurrentUserSuccess]: () => false,
+  [authActions.getCurrentUserError]: () => false,
+  [authActions.deleteCurrentUserRequest]: () => true,
+  [authActions.deleteCurrentUserSuccess]: () => false,
+  [authActions.deleteCurrentUserError]: () => false,
+});
 
 export default combineReducers({
   user,
   token,
   error,
-  //   loading,
+  loading,
 });

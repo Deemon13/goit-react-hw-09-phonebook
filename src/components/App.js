@@ -1,26 +1,46 @@
-import React, { Suspense } from "react";
+import React, { Component, Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import ThemeContext from "../context/ThemeContext";
 import Layout from "./Layout";
 import Spinner from "./libs-components/Loader";
+import PublicRoute from "./user-components/PublicRoute";
+import PrivateRoute from "./user-components/PrivateRoute";
 import routes from "../routes";
 import NotFound from "../views/NotFound";
+import { authOperations } from "../redux/auth";
 
-export default function App() {
-  return (
-    <ThemeContext>
-      <BrowserRouter>
-        <Layout>
-          <Suspense fallback={<Spinner />}>
-            <Switch>
-              {routes.map((route) => (
-                <Route key={route.path} {...route} />
-              ))}
-              <Route component={NotFound} />
-            </Switch>
-          </Suspense>
-        </Layout>
-      </BrowserRouter>
-    </ThemeContext>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.onGetCurrentUser();
+  }
+
+  render() {
+    return (
+      <ThemeContext>
+        <BrowserRouter>
+          <Layout>
+            <Suspense fallback={<Spinner />}>
+              <Switch>
+                {routes.map((route) =>
+                  route.private ? (
+                    <PrivateRoute key={route.label} {...route} />
+                  ) : (
+                    <PublicRoute key={route.label} {...route} />
+                  )
+                )}
+                <Route component={NotFound} />
+              </Switch>
+            </Suspense>
+          </Layout>
+        </BrowserRouter>
+      </ThemeContext>
+    );
+  }
 }
+
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);

@@ -1,19 +1,17 @@
 import axios from "axios";
-import { authActions } from "./auth";
+import authActions from "./authActions";
 
-axios.defaults.baseURL = "http://localhost:2000";
+axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
+axios.defaults.headers.post["Content-Type"] = "application/json";
 
-// axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
-// axios.defaults.headers.post["Content-Type"] = "application/json";
-
-// const token = {
-//     set(token) {
-//       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//     },
-//     unset() {
-//       axios.defaults.headers.common.Authorization = '';
-//     },
-//   };
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
 
 const register = (credentials) => (dispatch) => {
   dispatch(authActions.registerRequest());
@@ -21,7 +19,7 @@ const register = (credentials) => (dispatch) => {
   axios
     .post("/users/signup", credentials)
     .then((response) => {
-      // token.set(response.data.token);
+      token.set(response.data.token);
       dispatch(authActions.registerSuccess(response.data));
     })
     .catch((error) => dispatch(authActions.registerError(error)));
@@ -33,7 +31,7 @@ const logIn = (credentials) => (dispatch) => {
   axios
     .post("/users/login", credentials)
     .then((response) => {
-      // token.set(response.data.token);
+      token.set(response.data.token);
       dispatch(authActions.loginSuccess(response.data));
     })
     .catch((error) => dispatch(authActions.loginError(error)));
@@ -48,7 +46,7 @@ const getCurrentUser = () => (dispatch, getState) => {
     return;
   }
 
-  // token.set(persistedToken);
+  token.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
 
   axios
@@ -63,7 +61,7 @@ const logOut = () => (dispatch) => {
   axios
     .post("/users/logout")
     .then(() => {
-      // token.unset();
+      token.unset();
       dispatch(authActions.logoutSuccess());
     })
     .catch((error) => dispatch(authActions.logoutError(error)));
@@ -75,7 +73,7 @@ const deleteCurrentUser = () => (dispatch) => {
   axios
     .delete("/users/current")
     .then(({ data }) => {
-      // token.unset();
+      token.unset();
       dispatch(authActions.deleteCurrentUserSuccess(data));
     })
     .catch(({ message }) => authActions.deleteCurrentUserError(message));

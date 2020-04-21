@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonLogout({ text }) {
+export default function ButtonLogout({ text, onClick }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Button className={classes.label} variant="outlined">
+      <Button className={classes.label} onClick={onClick} variant="outlined">
         {text}
       </Button>
     </div>

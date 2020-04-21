@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { authSelectors, authOperations } from "../../redux/auth";
 import ButtonLogout from "../libs-components/ButtonLogout";
 
 const ContainerUserMenu = styled.div`
@@ -17,11 +19,7 @@ const NameUserMenu = styled.span`
   margin-right: 1rem;
 `;
 
-export default function UserMenu({
-  avatar = "https://icon-library.net/images/avatar-icon-images/avatar-icon-images-4.jpg",
-  name,
-  onLogout,
-}) {
+function UserMenu({ avatar, name, onLogout }) {
   return (
     <ContainerUserMenu>
       <AvatarUserMenu src={avatar} alt="" width="32" />
@@ -30,3 +28,13 @@ export default function UserMenu({
     </ContainerUserMenu>
   );
 }
+
+const mapStateToProps = (state) => ({
+  name: authSelectors.getUserName(state),
+  avatar:
+    "https://icon-library.net/images/avatar-icon-images/avatar-icon-images-4.jpg",
+});
+
+export default connect(mapStateToProps, { onLogout: authOperations.logOut })(
+  UserMenu
+);

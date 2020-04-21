@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { authOperations } from "../redux/auth";
 import ContainerViews from "../components/user-components/ContainerViews";
 import ButtonForm from "../components/user-components/ButtonForm";
 import StyledViews from "./StyledViews";
@@ -16,16 +18,15 @@ class LoginUserView extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.onRegister({ ...this.state });
-    // this.setState({ name: "", email: "", password: "" });
+    this.props.onLogin({ ...this.state });
+    this.setState({ email: "", password: "" });
   };
 
   render() {
     const { email, password } = this.state;
     return (
       <ContainerViews viewName={"authorization"}>
-        <StyledViews.FormView>
-          {/* <FormRegistration onSubmit={this.handleSubmit}> */}
+        <StyledViews.FormView onSubmit={this.handleSubmit}>
           <StyledViews.LabelInput>
             email:
             <StyledViews.InputForm
@@ -52,4 +53,4 @@ class LoginUserView extends Component {
   }
 }
 
-export default LoginUserView;
+export default connect(null, { onLogin: authOperations.logIn })(LoginUserView);
