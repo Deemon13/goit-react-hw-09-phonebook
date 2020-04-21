@@ -23,7 +23,7 @@ class FilterContainer extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.contacts.length !== this.props.contacts.length) {
       const { contacts } = this.props;
-      if (contacts.length > 1) {
+      if (contacts.length > 0) {
         return this.toAppear();
       }
       if (contacts.length <= 1) {
