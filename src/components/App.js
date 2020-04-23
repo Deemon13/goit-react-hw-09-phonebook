@@ -1,14 +1,14 @@
-import React, { Component, Suspense } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import ThemeContext from "../context/ThemeContext";
-import Layout from "./Layout";
-import Spinner from "./libs-components/Loader";
-import PublicRoute from "./user-components/PublicRoute";
-import PrivateRoute from "./user-components/PrivateRoute";
-import routes from "../routes";
-import NotFound from "../views/NotFound";
-import { authOperations } from "../redux/auth";
+import React, { Component, Suspense } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import ThemeContext from '../context/ThemeContext';
+import Layout from './Layout';
+import Spinner from './Loader/_Loader';
+import PublicRoute from './Routers/_PublicRoute';
+import PrivateRoute from './Routers/_PrivateRoute';
+import routes from '../routes';
+import NotFound from '../views/NotFound/NotFound';
+import { authOperations } from '../redux/auth';
 
 class App extends Component {
   componentDidMount() {
@@ -22,12 +22,12 @@ class App extends Component {
           <Layout>
             <Suspense fallback={<Spinner />}>
               <Switch>
-                {routes.map((route) =>
+                {routes.map(route =>
                   route.private ? (
                     <PrivateRoute key={route.label} {...route} />
                   ) : (
                     <PublicRoute key={route.label} {...route} />
-                  )
+                  ),
                 )}
                 <Route component={NotFound} />
               </Switch>
