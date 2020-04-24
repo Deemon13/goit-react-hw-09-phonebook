@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-// import routes from "../routes";
+import routesPathes from '../../routesPathes';
+import routes from '../../routes';
 import { authSelectors } from '../../redux/auth';
 
 const NavLinkItem = styled(NavLink).attrs(props => ({
@@ -26,22 +27,20 @@ const NavLinkItem = styled(NavLink).attrs(props => ({
 `;
 
 function Navigation({ isAuthenticated }) {
+  const privateRoutes = routes.filter(route => route.private);
+  console.log(privateRoutes);
   return (
     <nav>
-      <NavLinkItem to="/" exact>
-        Home
+      <NavLinkItem to={routesPathes.home} exact>
+        home
       </NavLinkItem>
       {isAuthenticated && (
         <>
-          <NavLinkItem to="/profile" exact>
-            Profile
-          </NavLinkItem>
-          <NavLinkItem to="/contacts" exact>
-            Contacts
-          </NavLinkItem>
-          <NavLinkItem to="/tasks" exact>
-            Tasks
-          </NavLinkItem>
+          {privateRoutes.map(route => (
+            <NavLinkItem key={route.label} to={route.path}>
+              {route.label}
+            </NavLinkItem>
+          ))}
         </>
       )}
     </nav>

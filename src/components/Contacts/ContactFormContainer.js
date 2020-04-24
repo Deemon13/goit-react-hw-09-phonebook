@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import shortid from 'shortid';
 import ContactForm from './ContactForm';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import withThemeContext from '../../hoc/withThemeContext';
@@ -16,6 +17,9 @@ class ContactFormContainer extends Component {
     showNotice: false,
     warning: null,
   };
+
+  inputNameId = shortid.generate();
+  inputPhoneId = shortid.generate();
 
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -53,6 +57,8 @@ class ContactFormContainer extends Component {
         warning={this.state.warning}
         name={this.state.name}
         number={this.state.number}
+        idName={this.inputNameId}
+        idPhone={this.inputPhoneId}
       />
     );
   }

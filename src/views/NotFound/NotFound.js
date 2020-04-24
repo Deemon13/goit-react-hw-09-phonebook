@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Spinner from '../../components/Loader/Loader';
-import routes from '../../routes';
+import routesPathes from '../../routesPathes';
 
 import imageNotFound from '../../assert/images/notFound.png';
 
@@ -40,7 +40,7 @@ function NotFound() {
         <Img src={imageNotFound} alt="cat detective" width="320" />
         <Text>
           Something went wrong. Let`s{' '}
-          <RouteLink to={(routes.path = '/')}>go back</RouteLink>!
+          <RouteLink to={routesPathes.home}>go back</RouteLink>!
         </Text>
       </Suspense>
     </Container>

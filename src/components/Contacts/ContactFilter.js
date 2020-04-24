@@ -33,6 +33,7 @@ export default function ContactFilter({
   onChangeFilter,
   theme,
   appear,
+  filterId,
 }) {
   return (
     <CSSTransition
@@ -42,16 +43,15 @@ export default function ContactFilter({
       unmountOnExit
     >
       <Container>
-        <Label>
-          Find contacts by name:
-          <Input
-            type="text"
-            backGroundColor={theme.themeState.inputField}
-            colorInputText={theme.themeState.inputFieldText}
-            value={value}
-            onChange={e => onChangeFilter(e.target.value)}
-          />
-        </Label>
+        <Label htmlFor={filterId}>Find contacts by name:</Label>
+        <Input
+          type="text"
+          backGroundColor={theme.themeState.inputField}
+          colorInputText={theme.themeState.inputFieldText}
+          value={value}
+          onChange={e => onChangeFilter(e.target.value)}
+          id={filterId}
+        />
       </Container>
     </CSSTransition>
   );

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Spinner from '../../components/Loader/Loader';
-import routes from '../../routes';
+import routesPathes from '../../routesPathes';
 
 const Container = styled.div`
   max-width: 72rem;
@@ -34,7 +34,7 @@ export default function TaskUserViews() {
         <Text>
           Sorry, but this feature will be available in future versions of the
           App. Now only the{' '}
-          <RouteLink to={(routes.path = '/contacts')}>phonebook</RouteLink> !
+          <RouteLink to={routesPathes.contacts}>phonebook</RouteLink> !
         </Text>
       </Suspense>
     </Container>

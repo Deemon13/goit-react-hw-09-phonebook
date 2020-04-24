@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import shortid from 'shortid';
 import ContactFilter from './ContactFilter';
 import { contactsActions, contactsSelectors } from '../../redux/contacts';
 import withThemeContext from '../../hoc/withThemeContext';
@@ -8,6 +9,8 @@ class ContactFilterContainer extends Component {
   state = {
     appear: false,
   };
+
+  inputFilter = shortid.generate();
 
   componentDidMount() {
     const { contacts } = this.props;
@@ -44,7 +47,13 @@ class ContactFilterContainer extends Component {
   };
   render() {
     const { appear } = this.state;
-    return <ContactFilter {...this.props} appear={appear} />;
+    return (
+      <ContactFilter
+        {...this.props}
+        appear={appear}
+        filterId={this.inputFilter}
+      />
+    );
   }
 }
 

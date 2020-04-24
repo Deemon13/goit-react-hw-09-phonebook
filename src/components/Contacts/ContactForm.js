@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import Notification from '../Notification/Notification';
 
 const Form = styled.form`
@@ -41,7 +42,7 @@ const Button = styled.button`
   }
 `;
 
-export default function ContactForm({
+function ContactForm({
   warning,
   showNotice,
   theme,
@@ -49,33 +50,35 @@ export default function ContactForm({
   number,
   handleSubmit,
   handleChange,
+  idName,
+  idPhone,
 }) {
   return (
     <>
       <Notification message={warning} showNotice={showNotice} />
       <Form onSubmit={handleSubmit}>
-        <Label>
-          Name:
-          <Input
-            type="text"
-            backGroundColor={theme.themeState.inputField}
-            colorInputText={theme.themeState.inputFieldText}
-            value={name}
-            onChange={handleChange}
-            name="name"
-          />
-        </Label>
-        <Label>
-          Phone:
-          <Input
-            type="text"
-            backGroundColor={theme.themeState.inputField}
-            colorInputText={theme.themeState.inputFieldText}
-            value={number}
-            onChange={handleChange}
-            name="number"
-          />
-        </Label>
+        <Label htmlFor={idName}>Name:</Label>
+        <Input
+          type="text"
+          backGroundColor={theme.themeState.inputField}
+          colorInputText={theme.themeState.inputFieldText}
+          value={name}
+          onChange={handleChange}
+          name="name"
+          id={idName}
+          required
+        />
+        <Label htmlFor={idPhone}>Phone:</Label>
+        <Input
+          type="text"
+          backGroundColor={theme.themeState.inputField}
+          colorInputText={theme.themeState.inputFieldText}
+          value={number}
+          onChange={handleChange}
+          name="number"
+          id={idPhone}
+          required
+        />
         <Button type="submit" disabled={!name || !number}>
           Add contact
         </Button>
@@ -83,3 +86,5 @@ export default function ContactForm({
     </>
   );
 }
+
+export default ContactForm;

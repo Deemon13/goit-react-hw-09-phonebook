@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Spinner from '../../components/Loader/Loader';
-import routes from '../../routes';
+import routesPathes from '../../routesPathes';
 import { authSelectors } from '../../redux/auth';
 
 const Container = styled.div`
@@ -36,15 +36,15 @@ function HomePage({ isAuthenticated }) {
         {isAuthenticated ? (
           <Text>
             Hi! Registration in this App will allow you to add contacts to the{' '}
-            <RouteLink to={(routes.path = '/contacts')}>phonebook</RouteLink> ,
-            use notes to plan and write tasks.
+            <RouteLink to={routesPathes.contacts}>phonebook</RouteLink> , use
+            notes to plan and write tasks.
           </Text>
         ) : (
           <Text>
             Hi! Registration in this App will allow you to add contacts to the
             phone book, use notes to plan and write tasks. For all this you need
-            to <RouteLink to={(routes.path = '/register')}>sign up</RouteLink>{' '}
-            or <RouteLink to={(routes.path = '/login')}>sign in</RouteLink>.
+            to <RouteLink to={routesPathes.register}>sign up</RouteLink> or{' '}
+            <RouteLink to={routesPathes.login}>sign in</RouteLink>.
           </Text>
         )}
       </Suspense>

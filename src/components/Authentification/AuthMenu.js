@@ -1,12 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-// import routes from "../routes";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import routes from '../../routes';
 
-const NavLinkItem = styled(NavLink).attrs((props) => ({
-  activeClassName: props.activeClassName || "activeLink",
+const NavLinkItem = styled(NavLink).attrs(props => ({
+  activeClassName: props.activeClassName || 'activeLink',
   activeStyle: {
-    color: "#adff2f",
+    color: '#adff2f',
   },
 }))`
   font-size: 2rem;
@@ -24,14 +24,16 @@ const NavLinkItem = styled(NavLink).attrs((props) => ({
 `;
 
 function AuthMenu() {
+  const publicRoutes = routes.filter(
+    route => !route.private && route.restricted,
+  );
   return (
     <nav>
-      <NavLinkItem to="/register" exact>
-        register
-      </NavLinkItem>
-      <NavLinkItem to="/login" exact>
-        login
-      </NavLinkItem>
+      {publicRoutes.map(route => (
+        <NavLinkItem key={route.label} to={route.path}>
+          {route.label}
+        </NavLinkItem>
+      ))}
     </nav>
   );
 }
