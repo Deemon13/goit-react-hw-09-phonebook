@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AppBar from './Header/_AppBar';
+import AppBar from './Header/AppBar';
 
 const ContainerStyled = styled.div`
   width: 100vw;

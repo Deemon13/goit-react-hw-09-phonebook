@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Notification from '../Notification/_Notification';
+import Notification from '../Notification/Notification';
 
 const Form = styled.form`
   display: flex;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import SwitchTheme from '../Theme/_Switcher';
-import Navigation from '../Header/_Navigation';
-import UserMenu from '../Authentification/_UserMenu';
-import AuthMenu from '../Authentification/_AuthMenu';
+import SwitchTheme from '../Theme/Switcher';
+import Navigation from './Navigation';
+import UserMenu from '../Authentification/UserMenu';
+import AuthMenu from '../Authentification/AuthMenu';
 import withThemeContext from '../../hoc/withThemeContext';
 import { authSelectors } from '../../redux/auth';
 

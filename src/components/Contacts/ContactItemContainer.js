@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ContactItem from './_ContactItem';
+import ContactItem from './ContactItem';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
 const mapStateToProps = (state, ownProps) => {

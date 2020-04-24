@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Container from '../../components/Authentification/_Container';
-import ButtonDelete from '../../components/ButtonDelete/_ButtonDelete';
+import Container from '../../components/Authentification/Container';
+import ButtonDelete from '../../components/ButtonDelete/ButtonDelete';
 import { authSelectors, authOperations } from '../../redux/auth';
 
 const WrapContainer = styled.div`

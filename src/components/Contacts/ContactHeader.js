@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactTitle from './_ContactTitle';
+import ContactTitle from './ContactTitle';
 import withThemeContext from '../../hoc/withThemeContext';
 
 const HeaderCont = styled.header`

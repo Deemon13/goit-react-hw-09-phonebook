@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ContactFilter from './_ContactFilter';
+import ContactFilter from './ContactFilter';
 import { contactsActions, contactsSelectors } from '../../redux/contacts';
 import withThemeContext from '../../hoc/withThemeContext';
 

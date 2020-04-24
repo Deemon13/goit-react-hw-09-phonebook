@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Spinner from '../../components/Loader/_Loader';
+import Spinner from '../../components/Loader/Loader';
 import routes from '../../routes';
 import { authSelectors } from '../../redux/auth';
 

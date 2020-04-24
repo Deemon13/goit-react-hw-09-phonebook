@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { authOperations } from '../../redux/auth';
-import Container from '../../components/Authentification/_Container';
-import ButtonSignUp from '../../components/ButtonSubmit/_ButtonSubmit';
+import Container from '../../components/Authentification/Container';
+import ButtonSignUp from '../../components/ButtonSubmit/ButtonSubmit';
 
 const FormView = styled.form`
   display: flex;

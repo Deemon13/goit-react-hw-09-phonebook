@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { authSelectors, authOperations } from '../../redux/auth';
-import ButtonLogout from '../ButtonLogout/_ButtonLogout';
+import ButtonLogout from '../ButtonLogout/ButtonLogout';
 
 const ContainerUserMenu = styled.div`
   display: flex;

@@ -2,7 +2,7 @@ import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import ContactItem from './_ContactItemContainer';
+import ContactItem from './ContactItemContainer';
 import itemSlide from '../../assert/animations/itemSlide.module.css';
 
 const List = styled.ul`

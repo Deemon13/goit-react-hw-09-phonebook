@@ -1,11 +1,11 @@
 import React from 'react';
-import Spinner from '../../components/Loader/_Loader';
-import ContactContainer from '../../components/Contacts/_ContactContainer';
-import ContactHeader from '../../components/Contacts/_ContactHeader';
-import ContactForm from '../../components/Contacts/_ContactFormContainer';
-import ContactSection from '../../components/Contacts/_ContactSection';
-import ContactFilter from '../../components/Contacts/_ContactFilterContainer';
-import ContactList from '../../components/Contacts/_ContactListContainer';
+import Spinner from '../../components/Loader/Loader';
+import ContactContainer from '../../components/Contacts/ContactContainer';
+import ContactHeader from '../../components/Contacts/ContactHeader';
+import ContactForm from '../../components/Contacts/ContactFormContainer';
+import ContactSection from '../../components/Contacts/ContactSection';
+import ContactFilter from '../../components/Contacts/ContactFilterContainer';
+import ContactList from '../../components/Contacts/ContactListContainer';
 
 function ContactsUserView({ contacts, isloadingContact }) {
   return (
